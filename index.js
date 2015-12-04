@@ -1,5 +1,6 @@
 
 var express = require('express');
+var favicon = require('serve-favicon');
 var app = express();
 var host = '0.0.0.0' || process.env.NODE_HOST;
 var port = 3000 || process.env.PORT;
