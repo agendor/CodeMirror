@@ -2,7 +2,7 @@
 var express = require('express');
 var app = express();
 var host = '0.0.0.0' || process.env.NODE_HOST;
-var port = 3000 || process.env.NODE_PORT;
+var port = 3000 || process.env.PORT;
 
 // app.get('/', function (req, res) {
 //   res.send('ae');
