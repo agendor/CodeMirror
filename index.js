@@ -2,8 +2,7 @@
 var express = require('express');
 var favicon = require('serve-favicon');
 var app = express();
-var host = '0.0.0.0' || process.env.NODE_HOST;
-var port = 3000 || process.env.PORT;
+var port = process.env.PORT || 3000;
 
 // app.get('/', function (req, res) {
 //   res.send('ae');
