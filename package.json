@@ -35,6 +35,7 @@
     "url": "https://github.com/codemirror/CodeMirror.git"
   },
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "serve-favicon": "^2.3.0"
   }
 }

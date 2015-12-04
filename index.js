@@ -8,6 +8,8 @@ var port = 3000 || process.env.PORT;
 //   res.send('ae');
 // });
 
+app.use(favicon(__dirname + '/public/favicon.ico'));
+
 app.use(express.static('public'));
 app.use(express.static('bower_components'));
 
