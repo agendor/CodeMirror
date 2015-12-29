@@ -14,6 +14,15 @@ $(function() {
     showOutput(logInterceptor.getInterceptedValue());
   });
 
+  $('.js-exam-submitSolution').click(function () {
+    var confirmed = confirm('Are you sure you want to submit your solution?');
+    if (confirmed) {
+      var email = $('#email').val();
+      var solution = editor.getValue();
+      submitSolution(email, solution);
+    }
+  });
+
   function getFunctionName() {
     var extractFunctionName = new RegExp(/function\s(\w+)\(/g);
     var functionName = extractFunctionName.exec(editor.getValue())[1];
@@ -84,4 +93,16 @@ function compareArrays(array1, array2) {
   } else {
     return false;
   }
+}
+
+function submitSolution(email, solution) {
+  $.ajax({
+    url: "/submit",
+    type: "POST",
+    data: JSON.stringify({email: email, solution: solution}),
+    contentType: "application/json"
+  })
+  .done(function( data ) {
+    alert(data);
+  });
 }
