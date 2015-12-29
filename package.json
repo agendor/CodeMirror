@@ -36,6 +36,8 @@
   },
   "dependencies": {
     "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
+    "mongoose": "^4.3.1",
     "serve-favicon": "^2.3.0"
   }
 }

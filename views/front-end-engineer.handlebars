@@ -1,0 +1,56 @@
+<article>
+<h2>Agendor Quiz</h2>
+
+<p>Create a function that receives an array that has numbers and arrays (like <code>[1, [2, 9, [[4], 10]], 3]</code>) and returns just numbers (<code>[1, 2, 9, 4, 10, 3]</code>).</p>
+
+<p>The code editor below has a similar behaviour to Sublime Text.</p>
+
+<div class="exam-editor">
+  <script>
+    var value = "// The bindings defined specifically in the Sublime Text mode\nvar bindings = {\n";
+    var map = CodeMirror.keyMap.sublime;
+    for (var key in map) {
+      var val = map[key];
+      if (key != "fallthrough" && val != "..." && (!/find/.test(val) || /findUnder/.test(val)))
+        value += "  \"" + key + "\": \"" + val + "\",\n";
+    }
+    value += "}\n\n// The implementation of joinLines\n";
+    value += CodeMirror.commands.joinLines.toString().replace(/^function\s*\(/, "function joinLines(").replace(/\n  /g, "\n") + "\n";
+    value = "function your_function_name() {\n\t\n}\n\nvar input = [1, [2, 9, [[4], 10]], 3];\nvar expected_output = [1, 2, 9, 4, 10, 3];\n\nconsole.log('your_function_name: '+ your_function_name(input));\nconsole.log('expected: '+ expected_output);";
+    var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
+      value: value,
+      lineNumbers: true,
+      mode: "javascript",
+      keyMap: "sublime",
+      autoCloseBrackets: true,
+      matchBrackets: true,
+      showCursorWhenSelecting: true,
+      theme: "monokai",
+      tabSize: 2
+    });
+  </script>
+</div>
+
+<div class="exam-actions">
+  <button class="btn js-exam-runSolution">Run</button>
+  <button class="btn js-exam-testSolution">Test</button>
+  <button class="btn js-exam-submitSolution">Submit</button>
+<div>
+
+<code class="exam-solutionOutput js-exam-solutionOutput">
+</code>
+
+email: {{email}}
+
+<!-- Begin Inspectlet Embed Code -->
+<script type="text/javascript" id="inspectletjs">
+window.__insp = window.__insp || [];
+__insp.push(['wid', 298752793]);
+(function() {
+function ldinsp(){if(typeof window.__inspld != "undefined") return; window.__inspld = 1; var insp = document.createElement('script'); insp.type = 'text/javascript'; insp.async = true; insp.id = "inspsync"; insp.src = ('https:' == document.location.protocol ? 'https' : 'http') + '://cdn.inspectlet.com/inspectlet.js'; var x = document.getElementsByTagName('script')[0]; x.parentNode.insertBefore(insp, x); };
+setTimeout(ldinsp, 500); document.readyState != "complete" ? (window.attachEvent ? window.attachEvent('onload', ldinsp) : window.addEventListener('load', ldinsp, false)) : ldinsp();
+})();
+</script>
+<!-- End Inspectlet Embed Code -->
+
+</article>
