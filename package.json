@@ -35,7 +35,11 @@
     "url": "https://github.com/codemirror/CodeMirror.git"
   },
   "dependencies": {
+    "body-parser": "^1.14.2",
     "express": "^4.13.3",
+    "express-handlebars": "^2.0.1",
+    "mongoose": "^4.3.1",
+    "nodemailer": "^1.11.0",
     "serve-favicon": "^2.3.0"
   }
 }
