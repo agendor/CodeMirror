@@ -10,7 +10,7 @@ var bodyParser = require('body-parser');
 app.engine('handlebars', exphbs({defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
 
-app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/views/favicon.ico'));
 
 app.use(express.static('views'));
 app.use(express.static('bower_components'));
