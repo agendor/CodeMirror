@@ -42,7 +42,11 @@ $(function() {
       this.interceptedValue = [];
       this.oldLog = console.log;
       console.log = function (text) {
-        this.interceptedValue.push(text);
+        if (text) {
+          this.interceptedValue.push(JSON.stringify(text));
+        } else {
+          this.interceptedValue.push(text);
+        }
       }.bind(this);
     };
     this.getInterceptedValue = function () {
@@ -79,7 +83,7 @@ function testSolution(solution, input, expected) {
     if (value === undefined || value === null) {
       return value;
     } else if (value.length > 0) {
-      return value.toString();
+      return JSON.stringify(value);
     } else {
       return '[]';
     }
