@@ -64,6 +64,7 @@ $(function() {
 
 function runTests(functionName) {
   var testsResults = [];
+  testsResults.push(">> Testing your first declared function: " + functionName);
   testsResults.push(testSolution(functionName, [[1, 2, [3, [10]]], 4], [1, 2, 3, 10, 4]));
   testsResults.push(testSolution(functionName, [[1, 2, [3], [5], 6], 4], [1, 2, 3, 5, 6, 4]));
   testsResults.push(testSolution(functionName, [], []));
