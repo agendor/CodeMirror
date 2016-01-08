@@ -1,16 +1,40 @@
 $(function() {
   $('.js-exam-testSolution').click(function () {
+    clearOutput();
     var functionName = getFunctionName();
+
+    var logInterceptor = new LogInterceptor();
+    var errorInterceptor = new ErrorInterceptor();
+    logInterceptor.start();
+    errorInterceptor.start();
+
     compileSolution(functionName);
-    var testsResults = runTests(functionName);
+    try {
+      var testsResults = runTests(functionName);
+    } catch (err) {
+      /* this will be caught by errorInterceptor */
+    }
+
+    logInterceptor.restore();
+    errorInterceptor.restore();
+    showOutput(errorInterceptor.getInterceptedValue());
+    showOutput(logInterceptor.getInterceptedValue());
     showOutput(testsResults);
   });
 
   $('.js-exam-runSolution').click(function () {
+    clearOutput();
+
     var logInterceptor = new LogInterceptor();
+    var errorInterceptor = new ErrorInterceptor();
     logInterceptor.start();
+    errorInterceptor.start();
+
     compileSolution();
+
     logInterceptor.restore();
+    errorInterceptor.restore();
+    showOutput(errorInterceptor.getInterceptedValue());
     showOutput(logInterceptor.getInterceptedValue());
   });
 
@@ -37,6 +61,21 @@ $(function() {
     document.body.appendChild(solutionScript);
   }
 
+  function ErrorInterceptor() {
+    this.start = function () {
+      this.interceptedValue = [];
+      window.onerror = function(error) {
+        this.interceptedValue.push(error);
+      }.bind(this);
+    };
+    this.getInterceptedValue = function () {
+      return this.interceptedValue;
+    };
+    this.restore = function () {
+      window.onerror = null;
+    };
+  }
+    
   function LogInterceptor() {
     this.start = function () {
       this.interceptedValue = [];
@@ -57,8 +96,19 @@ $(function() {
     };
   }
 
+  function clearOutput() {
+    $('.js-exam-solutionOutput').html('');
+  }
+
   function showOutput(output) {
-    $('.js-exam-solutionOutput').html(output.join('</br>'));
+    if (output) {
+      if (output.join) {
+        $('.js-exam-solutionOutput').append(output.join('</br>'));
+      } else {
+        $('.js-exam-solutionOutput').append(output);
+      }
+      $('.js-exam-solutionOutput').append('</br>');
+    }
   }
 });
 
