@@ -16,7 +16,7 @@
     }
     value += "}\n\n// The implementation of joinLines\n";
     value += CodeMirror.commands.joinLines.toString().replace(/^function\s*\(/, "function joinLines(").replace(/\n  /g, "\n") + "\n";
-    value = "function your_function_name() {\n\t\n}\n\nvar input = [1, [2, 9, [[4], 10]], 3];\nvar expected_output = [1, 2, 9, 4, 10, 3];\n\nconsole.log('your_function_name: '+ your_function_name(input));\nconsole.log('expected: '+ expected_output);";
+    value = "function your_function_name() {\n\t\n}\n\nvar input = [1, [2, 9, [[4], 10]], 3];\nvar expected_output = [1, 2, 9, 4, 10, 3];\n\nconsole.log('your_function_name: '+ JSON.stringify(your_function_name(input)));\nconsole.log('expected: '+ JSON.stringify(expected_output));";
     var editor = CodeMirror(document.body.getElementsByTagName("article")[0], {
       value: value,
       lineNumbers: true,
